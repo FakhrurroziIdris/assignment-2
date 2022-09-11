@@ -22,7 +22,7 @@ func main() {
 
 	router := gin.Default()
 	routerConfig.RouteOrders(router)
-	routerConfig.RouteCar(router)
-	routerConfig.RouteBrand(router)
+	// routerConfig.RouteCar(router)
+	// routerConfig.RouteBrand(router)
 	router.Run(PORT)
 }
