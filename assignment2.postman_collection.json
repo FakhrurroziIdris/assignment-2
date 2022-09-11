@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "a608066a-4be1-4d4d-9f43-b691cddeb9d5",
+		"name": "assignment2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9371689"
+	},
+	"item": [
+		{
+			"name": "POST new order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Ordered_At\":\"2022-09-11T23:30:35.156+07:00\",\r\n    \"Customer_Name\":\"Customer Order 2\",\r\n    \"Items\":[\r\n        {\r\n            \"Item_Code\":\"2\",\r\n            \"Description\":\"IPhone 10 X\",\r\n            \"Quantity\": 2\r\n        },\r\n        {\r\n            \"Item_Code\":\"3\",\r\n            \"Description\":\"Samsung Galaxy\",\r\n            \"Quantity\": 20\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an order by order ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Ordered_At\":\"2022-09-11T23:30:35.156+07:00\",\r\n    \"Customer_Name\":\"Customer Order 2\",\r\n    \"Items\":[\r\n        {\r\n            \"Item_Code\":\"2\",\r\n            \"Description\":\"IPhone 10 X\",\r\n            \"Quantity\": 2\r\n        },\r\n        {\r\n            \"Item_Code\":\"3\",\r\n            \"Description\":\"Samsung Galaxy\",\r\n            \"Quantity\": 20\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT existing order by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Ordered_At\":\"2022-09-11T23:30:35.156+07:00\",\r\n    \"Customer_Name\":\"Customer Order 1 updated\",\r\n    \"Items\":[\r\n        {\r\n            \"Item_ID\":16,\r\n            \"Item_Code\":\"3\",\r\n            \"Description\":\"IPhone 10 X updated\",\r\n            \"Quantity\": 3\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
