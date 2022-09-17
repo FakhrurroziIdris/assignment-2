@@ -1,0 +1,138 @@
+definitions:
+  models.Item:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      item_Code:
+        type: string
+      item_ID:
+        type: integer
+      order_ID:
+        type: integer
+      quantity:
+        type: number
+      updatedAt:
+        type: string
+    type: object
+  models.Order:
+    properties:
+      customer_Name:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/models.Item'
+        type: array
+      order_ID:
+        type: integer
+      ordered_At:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      description: get all orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Order'
+            type: array
+        "404":
+          description: http.StatusNotFound
+          schema:
+            type: string
+      summary: get all orders
+      tags:
+      - example
+    post:
+      description: create an order
+      parameters:
+      - description: Order models
+        in: body
+        name: object
+        schema:
+          $ref: '#/definitions/models.Order'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Order'
+        "400":
+          description: json string {message:{}}
+          schema:
+            type: string
+        "500":
+          description: json string {message:{}}
+          schema:
+            type: string
+      summary: create an order
+      tags:
+      - example
+  /:orderID:
+    delete:
+      description: delete an order
+      parameters:
+      - description: orderID
+        in: query
+        name: uint64
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Order'
+        "400":
+          description: json string {message:{}}
+          schema:
+            type: string
+        "500":
+          description: json string {message:{}}
+          schema:
+            type: string
+      summary: delete an order
+      tags:
+      - example
+    put:
+      description: update an order
+      parameters:
+      - description: orderID
+        in: query
+        name: uint64
+        type: integer
+      - description: Order models
+        in: body
+        name: object
+        schema:
+          $ref: '#/definitions/models.Order'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Order'
+        "400":
+          description: json string {message:{}}
+          schema:
+            type: string
+        "500":
+          description: json string {message:{}}
+          schema:
+            type: string
+      summary: update an order
+      tags:
+      - example
+swagger: "2.0"

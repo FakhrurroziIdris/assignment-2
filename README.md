@@ -27,5 +27,6 @@ go run main.go
 
 
 ## API Reference
-
+http://localhost:8080/swagger/orders/index.html
+or
 Import POSTMAN file assignment2.postman_collection.json

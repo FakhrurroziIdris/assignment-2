@@ -13,16 +13,16 @@ func main() {
 	config := configs.InitConfig()
 	pgsql.StartDB(config.Database)
 
-	// brand.Name = "Updated Toyota"
-	// brandRepo.UpdateBrand(brand)
-
-	// brandRepo.DeleteBrand(brand)
-
 	var PORT = config.WebServer.Port
 
 	router := gin.Default()
 	routerConfig.RouteOrders(router)
 	// routerConfig.RouteCar(router)
 	// routerConfig.RouteBrand(router)
+
+	// docs.SwaggerInfo.BasePath = "/orders"
+	// url := ginSwagger.URL(fmt.Sprintf("http://localhost%s/swagger/doc.json", PORT)) // The url pointing to API definition
+	// router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+
 	router.Run(PORT)
 }
