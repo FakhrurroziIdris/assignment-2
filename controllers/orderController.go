@@ -22,16 +22,19 @@ import (
 // @Failure 404 {string} string "http.StatusNotFound"
 // @Router / [get]
 func GetOrders(ctx *gin.Context) {
-	orders, err := service.GetOrders()
-	if err != nil {
+	c := make(chan models.Response)
+
+	go service.GetOrders(c)
+	response := <-c
+	if response.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{
-			"message": err.Error(),
+			"message": response.Error.Error(),
 		})
 		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
-		"data": orders,
+		"data": response.Data,
 	})
 }
 

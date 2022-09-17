@@ -5,14 +5,13 @@ import (
 	"assignment-2/models"
 )
 
-func GetOrders() (orders []models.Order, err error) {
-	db := pgsql.GetDB()
-
-	err = db.Preload("Items").Find(&orders).Error
-	if err != nil {
-		return orders, err
+func GetOrders(c chan models.Response) {
+	response := models.Response{}
+	response.Error = db.Preload("Items").Find(&response.Data).Error
+	if response.Data != nil {
+		c <- response
 	}
-	return orders, err
+	c <- response
 }
 
 func CreateOrders(payload models.Order) (orders *models.Order, err error) {

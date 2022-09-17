@@ -3,15 +3,15 @@ package service
 import (
 	"assignment-2/models"
 	brandRepo "assignment-2/repository"
-	"errors"
 )
 
-func GetOrders() (orders []models.Order, err error) {
-	orders, err = brandRepo.GetOrders()
-	if len(orders) > 0 {
-		return
+func GetOrders(c chan models.Response) {
+	go brandRepo.GetOrders(c)
+	response := <-c
+	if len(response.Data) > 0 {
+		c <- response
 	} else {
-		return orders, errors.New("Orders is empty.")
+		c <- response
 	}
 }
 

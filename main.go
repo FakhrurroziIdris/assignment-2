@@ -2,8 +2,6 @@ package main
 
 import (
 	"assignment-2/configs"
-	pgsql "assignment-2/helpers/database"
-
 	routerConfig "assignment-2/routers"
 
 	"github.com/gin-gonic/gin"
@@ -11,8 +9,6 @@ import (
 
 func main() {
 	config := configs.InitConfig()
-	pgsql.StartDB(config.Database)
-
 	var PORT = config.WebServer.Port
 
 	router := gin.Default()

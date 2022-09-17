@@ -21,8 +21,8 @@ func StartDB(envConfig models.Database) {
 	if err != nil {
 		log.Fatal("error connecting to database:", err)
 	}
-	// db.Debug().AutoMigrate(models.Brand{}, models.Car{})
-	db.Debug().AutoMigrate(models.Order{}, models.Item{})
+
+	db.Debug().AutoMigrate(models.Order{}, models.Item{}, models.Brand{}, models.Car{})
 }
 
 func GetDB() *gorm.DB {
